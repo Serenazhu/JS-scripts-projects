@@ -1,0 +1,145 @@
+/* VARIABLES */
+let enterButton;
+let a1Button;
+let a2Button;
+let b1Button;
+let b2Button;
+let screen = 0;
+
+
+function setup() {
+  createCanvas(600, 400);
+  textAlign(CENTER);
+  textSize(20);
+  noStroke();
+
+  background("blue");
+  text(
+    "You are on a small island \nsurrounded by ocean and you are trying to survive",
+    width / 2,
+    height / 2 - 100
+  );
+
+  // Create buttons for all screens and set position off screen
+  enterButton = new Sprite(width / 2, height / 2 + 100);
+  a1Button = new Sprite(-200, -200);
+  a2Button = new Sprite(-50, -50);
+  b1Button = new Sprite(-100, -100);
+  b2Button = new Sprite(-150, -150);
+}
+
+/* DRAW LOOP REPEATS */
+function draw() {
+  //Draw enter button
+  enterButton.w = 100;
+  enterButton.h = 50;
+  enterButton.collider = "k";
+  enterButton.text = "Start";
+  enterButton.color = "plum";
+
+  // Check enter button
+  if (enterButton.mouse.presses()) {
+    showScreen1();
+    screen = 1;
+  }
+
+  if (screen == 1) {
+    if (a1Button.mouse.presses()) {
+      showScreen2();
+      screen = 2;
+    } else if (a2Button.mouse.presses()) {
+      showScreen5();
+      screen = 5;
+    }
+  } else if (screen == 2) {
+    if (b1Button.mouse.presses()) {
+      showScreen3();
+      screen = 3;
+    } else if (b2Button.mouse.presses()) {
+      showScreen4();
+      screen = 4;
+    }
+  }
+
+  print(screen);
+}
+
+/* FUNCTIONS TO DISPLAY SCREENS */
+function showScreen1() {
+  //print("Enter the game")
+  background("paleturquoise");
+  text(
+    "You saw fishes in the \nocean and you are trying to figure \nout the most efficient way to catch them\n a: with your hands  b:with a fishing rod  ",
+    width / 2,
+    height / 2 - 100
+  );
+  // Move extra buttons off screen
+  enterButton.pos = { x: -100, y: -100 }; //do with x and y together first
+  b1Button.pos = { x: -100, y: -100 };
+  b2Button.pos = { x: -150, y: -150 };
+
+  // Add a1 button
+  a1Button.pos = { x: width / 2 - 50, y: height / 2 + 100 };
+  a1Button.w = 50;
+  a1Button.h = 50;
+  a1Button.collider = "k";
+  a1Button.color = "plum";
+  a1Button.text = "a";
+
+  // Add a2 button
+  a2Button.pos = { x: width / 2 + 50, y: height / 2 + 100 };
+  a2Button.w = 50;
+  a2Button.h = 50;
+  a2Button.collider = "k";
+  a2Button.color = "plum";
+  a2Button.text = "b";
+}
+
+function showScreen2() {
+  print("Display screen 2");
+  background("palegreen");
+  text(
+    "Good choice!\n You tried to stay hopeful by\n a) sleeping a lot b) thinking about your friends and family",
+    width / 2,
+    height / 2 - 100
+  );
+
+  a1Button.pos = { x: -200, y: -200 };
+  a2Button.pos = { x: -50, y: -50 };
+  // Add b1 Button
+  b1Button.pos = { x: width / 2 - 50, y: height / 2 + 100 };
+  b1Button.w = 50;
+  b1Button.h = 50;
+  b1Button.collider = "k";
+  b1Button.color = "plum";
+  b1Button.text = "a";
+  // Add b2 Button
+  b2Button.pos = { x: width / 2 + 50, y: height / 2 + 100 };
+  b2Button.w = 50;
+  b2Button.h = 50;
+  b2Button.collider = "k";
+  b2Button.color = "plum";
+  b2Button.text = "b";
+}
+
+function showScreen3() {
+  background("red");
+  text("You missed a boat that came by to your island :(.", width / 2, height / 2 - 100);
+  b1Button.pos = { x: -100, y: -100 };
+  b2Button.pos = { x: -150, y: -150 };
+}
+
+function showScreen4() {
+  background("plum");
+  text("You saw a boat that \ncame by to your island a few days later and both your \nfriends and family are on that boat :).", width / 2, height / 2 - 100);
+  b1Button.pos = { x: -100, y: -100 };
+  b2Button.pos = { x: -150, y: -150 };
+}
+
+function showScreen5() {
+  print("Display screen 5");
+  background("red");
+  text("You starved to death \n because there was no fishing rod.", width / 2, height / 2 - 100);
+  a1Button.pos = { x: -200, y: -200 };
+  a2Button.pos = { x: -50, y: -50 };
+}
