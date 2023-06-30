@@ -1,2 +1,2 @@
 # JS-scripts-projects
-All made during the Girls Who Code SIP program
+All were made during the Girls Who Code SIP program using the p5.js library
