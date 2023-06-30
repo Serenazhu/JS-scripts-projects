@@ -1,0 +1,54 @@
+/* VARIABLES */
+let eyeHeight =30;
+let eyeWidth = 45;
+let pupilWidth = 22;
+let pupilHeight = 25;
+
+/* SETUP RUNS ONCE */
+function setup() {
+  //sets the screen size
+  createCanvas(400,400); 
+
+  //sets the background color
+  background(176, 224, 230); 
+}
+
+/* DRAW LOOP REPEATS */
+function draw() {
+  angleMode(DEGREES);
+  rectMode(CENTER);
+  //Face
+  fill(255, 240, 210);
+  ellipse(width/2, height/2, 175, 200);
+  //Mouth
+  fill(255, 204, 204);
+  arc( 200, 230, 50, 50, 0, 180);
+  //Text
+  fill(0, 0, 0);
+  textSize(20);
+  text("never stop day dreaming", 20, 20);
+  text('Click to see me blink', 200, 380);
+
+  //Interaction
+  if (mouseIsPressed){
+    //Eye close
+  ellipse(160, 175, 50, 10);
+  ellipse(235, 175, 50, 10);
+
+  }
+  else{
+  //Eye open
+  fill(255, 240, 210);
+  ellipse(175, 175, eyeWidth, eyeHeight);
+  ellipse(235, 175, eyeWidth, eyeHeight);
+  //Pupils
+  fill(101, 67, 33);
+  ellipse(170, 170, pupilWidth, pupilHeight);
+  ellipse(230, 170, pupilWidth, pupilHeight);
+  }
+
+  
+  
+  
+  
+}
